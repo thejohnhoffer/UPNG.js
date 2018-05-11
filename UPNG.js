@@ -657,12 +657,12 @@ UPNG.encode._filterZero = function(img,h,bpp,bpl,data, filter)
 {
 	if(filter!=-1) {
 		for(var y=0; y<h; y++) UPNG.encode._filterLine(data, img, y, bpl, bpp, filter);
-		return pako["deflate"](data);
+		return pako["deflate"](data, {level: 0});
 	}
 	var fls = [];
 	for(var t=0; t<5; t++) {  if(h*bpl>500000 && (t==2 || t==3 || t==4)) continue;
 		for(var y=0; y<h; y++) UPNG.encode._filterLine(data, img, y, bpl, bpp, t);
-		fls.push(pako["deflate"](data));  if(bpp==1) break;
+		fls.push(pako["deflate"](data, {level: 0}));  if(bpp==1) break;
 	}
 	var ti, tsize=1e9;
 	for(var i=0; i<fls.length; i++) if(fls[i].length<tsize) {  ti=i;  tsize=fls[i].length;  }
