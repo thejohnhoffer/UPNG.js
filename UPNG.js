@@ -403,7 +403,7 @@ UPNG.encodeLL = function(bufs, w, h, cc, ac, depth, dels) {
 	for(var i=0; i<bufs.length; i++)
 		nimg.frames.push({  rect:{x:0,y:0,width:w,height:h},  img:new Uint8Array(bufs[i]), blend:0, dispose:1, bpp:Math.ceil(bipp/8), bpl:Math.ceil(bipl/8)  });
 	
-	UPNG.encode.compressPNG(nimg, 4);
+	UPNG.encode.compressPNG(nimg, 0);
 	
 	return UPNG.encode._main(nimg, w, h, dels);
 }
