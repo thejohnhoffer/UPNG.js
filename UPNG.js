@@ -442,12 +442,6 @@ UPNG.encode._main = function(nimg, w, h, dels) {
 	data[offset] = 0;  offset++;  // interlace
 	wUi(data,offset,crc(data,offset-17,17));  offset+=4; // crc
 
-	// 9 bytes to say, that it is sRGB
-	wUi(data,offset, 1);      offset+=4;
-	wAs(data,offset,"sRGB");  offset+=4;
-	data[offset] = 1;  offset++;
-	wUi(data,offset,crc(data,offset-5,5));  offset+=4; // crc
-
 	if(anim) {
 		wUi(data,offset, 8);      offset+=4;
 		wAs(data,offset,"acTL");  offset+=4;
